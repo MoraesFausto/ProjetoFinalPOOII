@@ -16,6 +16,7 @@ import br.edu.utfpr.fausto.pfboxe.modelo.vo.Cliente;
 import br.edu.utfpr.fausto.pfboxe.modelo.vo.Sessao;
 import br.edu.utfpr.fausto.pfboxe.modelo.vo.Treinador;
 import br.edu.utfpr.fausto.pfboxe.modelo.vo.Treinamento;
+import br.edu.utfpr.fausto.pfboxe.modelo.vo.tipoCliente;
 import br.edu.utfpr.fausto.pfboxe.modelo.vo.tipoPeso;
 import br.edu.utfpr.fausto.pfboxe.modelo.vo.tipoSessao;
 import br.edu.utfpr.fausto.pfboxe.modelo.vo.tipoTreinador;
@@ -91,7 +92,6 @@ public class Principal extends javax.swing.JFrame {
         
         sessao.setPeso(tipoPeso.MEDIO);
         sessao.setTreinador(treinador);
-        sessao.setLiberado(true);
         sessaoRN.salvar(sessao);
         sessoes.add(sessao);
         
@@ -103,6 +103,8 @@ public class Principal extends javax.swing.JFrame {
         cliente.setBolsa(0);
         cliente.setTelefone("99998879");
         cliente.setSexo("Feminino");
+        cliente.setIdade(20);
+        cliente.setRanking(tipoCliente.INICIANTE);
         clienteRN.salvar(cliente);
         
         treinamento.setCategoria(categoria);

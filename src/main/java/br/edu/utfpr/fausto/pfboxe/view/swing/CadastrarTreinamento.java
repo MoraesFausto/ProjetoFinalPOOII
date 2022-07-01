@@ -253,7 +253,7 @@ public class CadastrarTreinamento extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
         try{
             if(idAlteracao == 0){
-               sessao = sessaoRN.listarDesc(ses.getSelectedItem().toString());
+               sessao = sessaoRN.listarUm(Long.valueOf(ses.getSelectedItem().toString()));
                categoria = categoriaRN.listarDesc(ctg.getSelectedItem().toString());
                
                cli = clienteRN.listarUm(Long.valueOf(cc.getText()));
@@ -273,7 +273,7 @@ public class CadastrarTreinamento extends javax.swing.JInternalFrame {
 
             }else{
                Treinamento t = treinamentoRN.listarUm(idAlteracao);
-               sessao = sessaoRN.listarUm(idAlteracao);
+               sessao = sessaoRN.listarUm(Long.valueOf(ses.getSelectedItem().toString()));
                categoria = categoriaRN.listarDesc(ctg.getSelectedItem().toString());
                
                cli = clienteRN.listarUm(Long.valueOf(cc.getText()));

@@ -8,6 +8,8 @@ package br.edu.utfpr.fausto.pfboxe.modelo.vo;
 import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
@@ -20,27 +22,16 @@ import javax.persistence.Table;
 @Table(name = "Cliente")
 public class Cliente extends Pessoa {
 
-    @Column(nullable = false)
-    private int cliente_id;
+     @Enumerated(EnumType.STRING)
+    private tipoCliente ranking;
 
-    @OneToMany(mappedBy = "cliente")
-    List<Treinamento> treinamentos;
+    public tipoCliente getRanking() {
+        return ranking;
+    }
+
+    public void setRanking(tipoCliente ranking) {
+        this.ranking = ranking;
+    }
     
-    public int getCliente_id() {
-        return cliente_id;
-    }
-
-    public void setCliente_id(int cliente_id) {
-        this.cliente_id = cliente_id;
-    }
-
-    public List<Treinamento> treinamentos() {
-        return treinamentos;
-    }
-
-    public void setTreinamentos(List<Treinamento> treinamentos) {
-        this.treinamentos = treinamentos;
-    }
-
 }
 

@@ -228,13 +228,14 @@ public class ConsultarTreinamento extends javax.swing.JInternalFrame {
             model.setNumRows(0);
             this.treinamento = treinamentoRN.listarUm(Long.valueOf(filtro));
 
-            String[] linha = {String.valueOf( treinamento.getCodigo() ), String.valueOf(treinamento.getCliente().getCliente_id()), 
+            String[] linha = {String.valueOf( treinamento.getCodigo() ), String.valueOf(treinamento.getCliente().getCodigo()), 
                 treinamento.getDesc(), String.valueOf(treinamento.getPagamento()), 
                 treinamento.getCategoria().getDescricao(), String.valueOf(treinamento.getTipo())};
             model.addRow(linha);
 
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(this, e);
+                        JOptionPane.showMessageDialog(this, "Nao foi possivel encontrar um treinamento com este codigo!");
+
         }
     }//GEN-LAST:event_btnSearchActionPerformed
 

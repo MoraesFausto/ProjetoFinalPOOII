@@ -53,11 +53,7 @@ public class TreinamentoDAOImpl implements TreinamentoDAO {
 
         Query query = manager.createQuery("SELECT t FROM Treinamento t");
         treinamentos = query.getResultList();
-        
-        for(Treinamento t : treinamentos){
-            System.out.println(t.getDesc());
-        }
-
+ 
         return treinamentos;
     }
 

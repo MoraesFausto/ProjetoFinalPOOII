@@ -156,10 +156,10 @@ public class CadastrarCategoria extends javax.swing.JInternalFrame {
                 c.setMax(Float.parseFloat(max.getText()));
                 
                 categoriaRN.atualizar(c);
-                JOptionPane.showMessageDialog(this, "Categoria cadastrada com sucesso!");
+                JOptionPane.showMessageDialog(this, "Categoria atualizada com sucesso!");
             } 
         }catch(Exception e){
-               JOptionPane.showMessageDialog(this, e);
+               JOptionPane.showMessageDialog(this, "Categoria não pode ser criada! Verifique as informações inseridas");
         }
 
     }//GEN-LAST:event_btnCadastrarActionPerformed

@@ -182,7 +182,7 @@ public class ConsultarTreinador extends javax.swing.JInternalFrame {
             model.addRow(linha);
 
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(this, e);
+            JOptionPane.showMessageDialog(this, "Nao foi possivel encontrar um treinador com este codigo!");
         }
     }//GEN-LAST:event_btnSearchActionPerformed
 

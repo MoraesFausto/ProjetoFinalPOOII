@@ -38,7 +38,8 @@ public class ConsultarCliente extends javax.swing.JInternalFrame {
             this.clientes = clienteRN.listaTodos();
             
             for(Cliente c : clientes  ){
-            String[] linha = {String.valueOf( c.getCodigo()), c.getNome(), c.getCpf(), c.getTelefone()};
+            String[] linha = {String.valueOf( c.getCodigo()), c.getNome(), c.getCpf(), c.getTelefone(), 
+                String.valueOf(c.getRanking())};
             model.addRow(linha);
             }
 
@@ -69,6 +70,12 @@ public class ConsultarCliente extends javax.swing.JInternalFrame {
         setPreferredSize(new java.awt.Dimension(615, 375));
 
         jLabel1.setText("Codigo:");
+
+        codigo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                codigoActionPerformed(evt);
+            }
+        });
 
         btnSearch.setText("Pesquisar");
         btnSearch.addActionListener(new java.awt.event.ActionListener() {
@@ -110,11 +117,11 @@ public class ConsultarCliente extends javax.swing.JInternalFrame {
 
             },
             new String [] {
-                "Codigo", "Nome", "CPF", "Telefone"
+                "Codigo", "Nome", "CPF", "Telefone", "Ranking"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false
+                false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -128,23 +135,26 @@ public class ConsultarCliente extends javax.swing.JInternalFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jScrollPane1)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addGroup(layout.createSequentialGroup()
-                            .addComponent(btnSearch)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                            .addComponent(btnNovo)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                            .addComponent(btnAtualizar)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                            .addComponent(btnExcluir)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                            .addComponent(btnCancelar))
-                        .addComponent(codigo)))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(75, 75, 75)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jScrollPane1)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(btnSearch)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(btnNovo)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(btnAtualizar)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(btnExcluir)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(btnCancelar))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(220, 220, 220)
+                        .addComponent(jLabel1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(codigo, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(75, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -204,7 +214,7 @@ public class ConsultarCliente extends javax.swing.JInternalFrame {
             JOptionPane.showMessageDialog(this, "Cliente Excluído com Sucesso!");
             this.setClosable(true);
         }catch(Exception e){
-            JOptionPane.showMessageDialog(this, e);
+            JOptionPane.showMessageDialog(this, "Cliente nao encontrado!");
         }
     }//GEN-LAST:event_btnExcluirActionPerformed
 
@@ -222,9 +232,14 @@ public class ConsultarCliente extends javax.swing.JInternalFrame {
                 model.addRow(linha);
 
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(this, e);
+                        JOptionPane.showMessageDialog(this, "Cliente nao encontrado!");
+
         }
     }//GEN-LAST:event_btnSearchActionPerformed
+
+    private void codigoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_codigoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_codigoActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

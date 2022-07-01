@@ -39,9 +39,6 @@ public class Sessao {
         this.tiposessao = tiposessao;
     }
     
-    @Column(nullable = false)
-    private boolean liberado;
-
     @ManyToOne
     private Treinamento treinamento;
     
@@ -58,14 +55,6 @@ public class Sessao {
         this.codigo = codigo;
     }
     
-    public void setLiberado(boolean liberado) {
-        this.liberado = liberado;
-    }
-
-    public boolean isLiberado() {
-        return liberado;
-    }
-
     public Treinador getTreinador() {
         return treinador;
     }

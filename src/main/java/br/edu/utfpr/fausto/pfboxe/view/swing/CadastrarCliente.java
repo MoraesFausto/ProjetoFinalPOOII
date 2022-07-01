@@ -6,11 +6,9 @@
 package br.edu.utfpr.fausto.pfboxe.view.swing;
 
 import br.edu.utfpr.fausto.pfboxe.modelo.rn.ClienteRN;
-import br.edu.utfpr.fausto.pfboxe.modelo.rn.TreinamentoRN;
 import br.edu.utfpr.fausto.pfboxe.modelo.vo.Cliente;
-import br.edu.utfpr.fausto.pfboxe.modelo.vo.Treinamento;
+import br.edu.utfpr.fausto.pfboxe.modelo.vo.tipoCliente;
 import br.edu.utfpr.fausto.pfboxe.modelo.vo.tipoPeso;
-import java.util.List;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
 
@@ -22,17 +20,12 @@ public final class CadastrarCliente extends javax.swing.JInternalFrame {
 
     private Long idAlteracao = 0L;
     private ClienteRN clienteRN;
-    private TreinamentoRN treinamentoRN;
     private Cliente cli;
-    private List<Treinamento> treinamentos;
-    private Treinamento treinamento;
     private tipoPeso tipopeso;
 
     
     public CadastrarCliente() {
         this.clienteRN = new ClienteRN();
-        this.treinamentoRN = new TreinamentoRN();
-        this.treinamento = new Treinamento();
         this.cli = new Cliente();
         initComponents();
         FillBox();
@@ -42,8 +35,6 @@ public final class CadastrarCliente extends javax.swing.JInternalFrame {
     public CadastrarCliente(Long idAlteracao) {
         this.clienteRN = new ClienteRN();
         this.cli = new Cliente();
-        this.treinamentoRN = new TreinamentoRN();
-        this.treinamento = new Treinamento();
         
         initComponents();
         FillBox();
@@ -64,11 +55,8 @@ public final class CadastrarCliente extends javax.swing.JInternalFrame {
     
     public void FillBox(){
         try{
-            this.treinamentos  = treinamentoRN.listaTodos();
-            this.treinamentos.forEach((t) -> {
-                tr.addItem(t.getDesc());
-             });
-                        tipo.setModel(new DefaultComboBoxModel<>(tipoPeso.values()));
+            tipo.setModel(new DefaultComboBoxModel<>(tipoPeso.values()));
+            tr.setModel(new DefaultComboBoxModel<>(tipoCliente.values()));
 
         } catch (Exception e){
             JOptionPane.showMessageDialog(this, e);
@@ -105,7 +93,7 @@ public final class CadastrarCliente extends javax.swing.JInternalFrame {
 
         setPreferredSize(new java.awt.Dimension(615, 375));
 
-        jLabel2.setText("Treinamento:");
+        jLabel2.setText("Ranking:");
 
         tr.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -168,14 +156,9 @@ public final class CadastrarCliente extends javax.swing.JInternalFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(34, 34, 34)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jLabel10)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(tel))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(0, 77, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel14, javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jLabel13, javax.swing.GroupLayout.Alignment.TRAILING)
@@ -186,28 +169,33 @@ public final class CadastrarCliente extends javax.swing.JInternalFrame {
                             .addComponent(sex, javax.swing.GroupLayout.DEFAULT_SIZE, 180, Short.MAX_VALUE)
                             .addComponent(age)
                             .addComponent(cpf)
-                            .addComponent(nome)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(20, 20, 20)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel11)
-                            .addComponent(jLabel12))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(nome))
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(tipo, 0, 180, Short.MAX_VALUE)
-                            .addComponent(bolsa1))))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(64, 64, 64)
-                            .addComponent(jLabel2)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                            .addComponent(tr, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(cadastrar)))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(64, 64, 64)
+                                .addComponent(jLabel2)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(tr, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(cadastrar))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(60, 60, 60)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(jLabel10)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(tel))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(20, 20, 20)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jLabel11)
+                                    .addComponent(jLabel12))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(tipo, 0, 181, Short.MAX_VALUE)
+                                    .addComponent(bolsa1))))
+                        .addGap(199, 199, 199)
                         .addComponent(cancelar)))
                 .addContainerGap())
         );
@@ -259,17 +247,11 @@ public final class CadastrarCliente extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void trActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_trActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_trActionPerformed
-
     private void cadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cadastrarActionPerformed
         // TODO add your handling code here:
          try{
                 if(this.idAlteracao == 0){
                     
-                    treinamento = treinamentoRN.listarDesc(tr.getSelectedItem().toString());
-                    treinamentos.add(treinamento);
                     
                     cli.setNome(nome.getText());
                     cli.setCpf(cpf.getText());
@@ -278,11 +260,10 @@ public final class CadastrarCliente extends javax.swing.JInternalFrame {
                     cli.setBolsa(Float.parseFloat(bolsa1.getText()));
                     cli.setTelefone(tel.getText());
                     cli.setTipopeso(tipopeso.valueOf(tipo.getSelectedItem().toString()));
+                    cli.setRanking(tipoCliente.valueOf(tr.getSelectedItem().toString()));
                     
-                    cli.setTreinamentos(treinamentos);
 
-
-                    this.clienteRN.salvar(cli);
+                    clienteRN.salvar(cli);
                     JOptionPane.showMessageDialog(this, "Cliente cadastrado!");
 
                 }else{
@@ -290,8 +271,6 @@ public final class CadastrarCliente extends javax.swing.JInternalFrame {
 
                     cliRecuperado.setNome(this.nome.getText());
 
-                    treinamento = treinamentoRN.listarDesc(tr.getSelectedItem().toString());
-                    treinamentos.add(treinamento);
                     cli.setNome(nome.getText());
                     cli.setCpf(cpf.getText());
                     cli.setIdade(Integer.parseInt(age.getText()));
@@ -322,6 +301,10 @@ public final class CadastrarCliente extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_nomeActionPerformed
 
+    private void trActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_trActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_trActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField age;
@@ -341,6 +324,6 @@ public final class CadastrarCliente extends javax.swing.JInternalFrame {
     private javax.swing.JTextField sex;
     private javax.swing.JTextField tel;
     private javax.swing.JComboBox<tipoPeso> tipo;
-    private javax.swing.JComboBox<String> tr;
+    private javax.swing.JComboBox<tipoCliente> tr;
     // End of variables declaration//GEN-END:variables
 }

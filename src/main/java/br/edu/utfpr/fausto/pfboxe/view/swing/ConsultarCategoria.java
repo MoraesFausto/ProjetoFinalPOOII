@@ -178,7 +178,8 @@ public class ConsultarCategoria extends javax.swing.JInternalFrame {
             }
 
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(this, e);
+                        JOptionPane.showMessageDialog(this, "Nao foi possivel encontrar uma categoria com este codigo!");
+
         }
     }
     
@@ -229,7 +230,8 @@ public class ConsultarCategoria extends javax.swing.JInternalFrame {
             JOptionPane.showMessageDialog(this, "Categoria Excluído com Sucesso!");
             this.setClosable(true);
         }catch(Exception e){
-            JOptionPane.showMessageDialog(this, e);
+             JOptionPane.showMessageDialog(this, "Categoria não pode ser excluida! Provavelmente há um treinamento" 
+                     + "desta categoria em vigor");
         }
     }//GEN-LAST:event_btnExcluirActionPerformed
 
